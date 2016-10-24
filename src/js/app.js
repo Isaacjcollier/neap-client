@@ -6,8 +6,11 @@
 
   angular
     .module('myApp', [
+      'myApp.services',
+      'ngRoute',
       'myApp.config',
-      'myApp.components.main'
+      'myApp.components.main',
+      'myApp.components.coffee'
     ]);
 
 })();
