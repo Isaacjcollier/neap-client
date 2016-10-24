@@ -10,7 +10,7 @@
 
   function coffeeService($http) {
     /*jshint validthis: true */
-    const baseURL = 'http://rocky-journey-79261.herokuapp.com/coffee';
+    const baseURL = '//rocky-journey-79261.herokuapp.com/coffee';
     this.getAllCoffee = function() {
       return $http.get(baseURL);
     };
