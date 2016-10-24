@@ -12,4 +12,6 @@ This is the client-side of our NEAP App. It consumes data from the server. Writt
 1. Service:
   - AJAX requests
   - Helper function
+1. Add `access-control` header check to server
 1. Controller - update the view
+1. `git subtree push --prefix src origin gh-pages`
