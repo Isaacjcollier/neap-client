@@ -4,7 +4,8 @@
 
   angular
     .module('myApp.config', [])
-    .config(appConfig);
+    .config(appConfig)
+    .run(routeStart);
 
   function appConfig($routeProvider) {
     $routeProvider
@@ -13,9 +14,30 @@
         controller: 'coffeeController',
         controllerAs: 'coffeeCtrl'
       })
+      .when('/members', {
+        template: '<h1>Members Only</h1>',
+        access: false
+      })
+      .when('/user', {
+        templateUrl: 'js/components/user/user.view.html',
+        controller: 'userController',
+        controllerAs: 'userCtrl',
+        access: true
+      })
       .otherwise({
         redirectTo: '/coffee'
       });
+  }
+
+  function routeStart($rootScope, $location, $route, userService) {
+    $rootScope.$on('$routeChangeStart', (event, next, current) => {
+      if (!next.access) {
+        if (!localStorage.getItem('token')) {
+          $location.path('/user');
+        }
+      }
+    });
+
   }
 
 })();
